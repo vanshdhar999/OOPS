@@ -1,55 +1,44 @@
 # This application is a basic introduction to OOPS.
 
-# please follow through the code and see the comments alongside.
+# Please follow through the multiple files to see which class is being used.
 
-# we will be re creating a store management application. 
-
-class Item:
-	"""
-	This docstring contains the global keywords or references to common methods:
-	1. __ function refer to the magic methods eg. __init__ method
+# We will be re creating a store management application. 
+"""
+	This docstring contains the global keywords, main features of the OOPS and some common but useful methods:
+	1. __ function refer to the magic methods eg. __init__, __repr__ method
 
 	2. assert function is a testing function.
 
-	3. instance attributes vs class attributes. """
-	pay_rate = 0.8 # rate after applying discount
-					# this is a class attribute
-	store_status = False # True if store is open, false is closed
-	def __init__(self, name: str , price: float, quantity = 0): # functions starting with __ are called magic methods, these get run automatically when the class is called
-				
-				# running validations
-				assert price >= 0, f"Invalid price"
-				assert quantity >=0 , f"Invalid quantity"
+	3. instance attributes vs class attributes.
 
+	4. __dict__ method gives the details of the class instantitated, in the form of a dictionary.
 
-				# assigning to self object 
-				self.name = name					# init is also called constructor method sometimes
-				self.price = price
-				self.quantity = quantity
-	def calculate_total_price(self):  # self keyword is a common convention used in oops
+	5. __repr__ magic method helps us represent our instances of class in the way we want. 
 
-		return self.price * self.quantity
+	6. We do not want to hardcode the instances of the class, therefore we define a method for it, take the data from a csv file
 
-	def apply_discount(self):
-		self.price = self.price * self.pay_rate
+	7. class methods are useful when we want to instantiate the instances with the help of a method defined in the class
+	
+	8. static methods are used to define normal functions, more on this later. @staticmethod is used as a decorator.
+	
+	9. See in static method, we use a normal argument as used in normal functions.
+	
+	10. class inheritance is used when we want a specific class for something, but has common features as it's super class.
+	
+	11. self.__class__.__name__ takes in the class instance, useful in repr method.
+    
+    12. As our code gets lengthier we, split our classes into multiple files and import the required classes.
+    
+    13. getters and setters, we can set any attribute to be read only, using the @property decorator.
 
-	def store_open_closed(self):
-		if not self.store_status:
-			return f'Store is closed !'
+    14. @property decorator, raises an exception we try to change the value of the attribute specified.
+    """
 
-
-
-
-item1 = Item("Pencil", 100, 4)
-item2 = Item("Laptop", 100, 4) # Instantiating instance attributes
-
-print(item1.store_open_closed())
-
-
-
-
-
-
+from item import Item
+from store import Store
+store1 = Store('Duke Elec', 'Open', 'Ohio', 1000, 'electronics')
+item1 = Item('Phone', 1999, 12)
+print(item1.calculate_total_price())
 
 
 
