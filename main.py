@@ -32,15 +32,29 @@
     13. getters and setters, we can set any attribute to be read only, using the @property decorator.
 
     14. @property decorator, raises an exception we try to change the value of the attribute specified.
+
+    15. @function.setter method allows you to change the value of the instance, even if it is set to read only.
+
+    16. The four main principles of OOPS are, Encapsulation, Abstraction, Polymorphism and Inheritance.
+
+	17. Encapsulation is just setting some restrictions on the attributes of a class we define, just like we did with self.name in Item class.
+
+	18. Abstraction is the second principle of OOPS, it basically emphasizes on hiding the unecessary details. in java and some other languages, 
+	this is done through private and public classes i think, in python we can use __ to private the method.
+
+	19. Inheritance is the third principle of the OOPS, we have already seen inheritance by defining the Phone class, which inherits the attributes
+	from the Item class. We can define as many child classes as we want to.
+
+	20.Polymorphism is the last principle of the OOP, it basically refers to adaptability of a specific method defined. It changes according to the scenario.
+	In our code, apply_discount method works on all the child classes. 
+
+
     """
 
 from item import Item
 from store import Store
-store1 = Store('Duke Elec', 'Open', 'Ohio', 1000, 'electronics')
+store1 = Store('Duke Elec', 'Open', 'Ohio', 1000, 'Electronics')
 item1 = Item('Phone', 1999, 12)
-print(item1.calculate_total_price())
-
-
 
 
 

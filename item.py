@@ -14,13 +14,13 @@ class Item:
 
 				# assigning to self object 
 				self.__name = name	
-				self.price = price
+				self.__price = price
 				self.quantity = quantity
 
-				Item.all_items.append(self)	# adds the items to the item list
+				Item.all_items.append(self)	# adds the items to the item list 
 	
 	@property # Property decorator--Read Only Attribute.
-	def  name(self):
+	def name(self):
 		return self.__name
 	
 
@@ -28,13 +28,27 @@ class Item:
 	def name(self, value):
 		self.__name = value
 
+
+	@property
+	def price(self):
+		return self.__price
+
 	def calculate_total_price(self):  # self keyword is a common convention used in oops
 
-		return self.price * self.quantity
+		return self.__price * self.quantity
 
 	def apply_discount(self):
-		self.price = self.price * self.pay_rate
+		self.__price = self.__price * self.pay_rate
 
+	@price.setter
+	def price(self, value):
+		assert value>=0, f'Price is invalid !'
+		self.__price = value
+
+	def apply_increment(self, increment_value):
+		assert increment_value >=0, f'Increment value is invalid !'
+
+		self.__price = self.__price + self.__price * increment_value
 
 	def __repr__(self):
 		return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
@@ -63,3 +77,19 @@ class Item:
 			return True
 		else:
 			return False
+
+
+	def __connect(self ,smtp_server): # Double underscore is used to private the method, so that unnecessary details are hidden.
+		pass
+
+	def __prepare_body(self):
+		return f'Some message !'
+
+	def __send(self):
+		pass
+
+	def send_email(self):
+		self.__connect("")
+		self.__prepare_body()
+		self.__send()
+
